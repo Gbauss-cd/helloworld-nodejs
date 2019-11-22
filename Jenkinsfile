@@ -7,6 +7,7 @@ pipeline {
   stages {
     triggers {
     eventTrigger simpleMatch('hello-api-deploy-event')
+    publishEvent simpleEvent('hello-api-deploy-event')  
   }
     stage('Test') {
       agent {
