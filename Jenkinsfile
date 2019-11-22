@@ -4,11 +4,10 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '2'))
     skipDefaultCheckout true
   }
-  stages {
-    triggers {
+  triggers {
     eventTrigger simpleMatch('hello-api-deploy-event')
-    publishEvent simpleEvent('hello-api-deploy-event')  
   }
+  stages {
     stage('Test') {
       agent {
         kubernetes {
