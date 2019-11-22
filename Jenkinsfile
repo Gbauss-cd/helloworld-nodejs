@@ -40,7 +40,7 @@ pipeline {
       }
       input {
         message "Should we deploy?"
-        submitter "beedemo-ops"
+        submitter "clouddevopsengineer"
         submitterParameter "APPROVER"
       }
       steps {
