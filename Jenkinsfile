@@ -1,13 +1,17 @@
 pipeline {
- agent {
+  agent none
+  options { 
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    skipDefaultCheckout true
+  }
+  stages {
+    stage('Test') {
+      agent {
         kubernetes {
           label 'nodejs-app-pod-2'
           yamlFile 'nodejs-pod.yaml'
         }
       }
-  stages {
-    stage('Test') {
-      agent { label 'nodejs-app' }
       steps {
         checkout scm
         container('nodejs') {
